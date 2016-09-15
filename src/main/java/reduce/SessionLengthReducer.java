@@ -6,7 +6,7 @@ import org.apache.flink.api.java.tuple.Tuple3;
 import org.apache.flink.util.Collector;
 
 /**
- * Created by juspinto on 13/09/2016.
+ * Take Tuple3<TimeStampMs, User, Request> and return Tuple2<String, SessionLength> for each session.
  */
 public class SessionLengthReducer implements GroupReduceFunction<Tuple3<Long, String, String>, Tuple2<String, Long>>
 {

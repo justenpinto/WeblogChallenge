@@ -5,7 +5,7 @@ import org.apache.flink.api.java.tuple.Tuple2;
 import org.apache.flink.util.Collector;
 
 /**
- * Created by juspinto on 13/09/2016.
+ * Takes a list of Tuple2<String, SessionLength> and returns the average session length for the given user
  */
 public class AverageSessionReducer implements GroupReduceFunction<Tuple2<String, Long>, Double>
 {

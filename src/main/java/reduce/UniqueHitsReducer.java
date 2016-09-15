@@ -10,7 +10,7 @@ import java.util.Map;
 import java.util.Set;
 
 /**
- * Created by juspinto on 13/09/2016.
+ * Takes Tuple3<TimeStamp, String, Request> and returns Tuple3<User, SessionNum, #UniqueHits>.
  */
 public class UniqueHitsReducer implements GroupReduceFunction<Tuple3<Long, String, String>, Tuple3<String, Integer, Integer>>
 {
@@ -39,13 +39,14 @@ public class UniqueHitsReducer implements GroupReduceFunction<Tuple3<Long, Strin
                 long diff = timestamp - lastSessionTime;
                 if (diff > timeout)
                 {
-                    // new session
+                    // Previous session has timed out
+                    // Gather information and collect
                     out.collect(new Tuple3<String, Integer, Integer>(user, sessionNum, userUniqueRequests.size()));
 
+                    // Reset session informatoin
                     userUniqueRequests.clear();
                     sessionNum++;
                     userUniqueRequests.add(request);
-
                 }
                 else
                 {

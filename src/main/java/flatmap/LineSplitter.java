@@ -10,7 +10,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 /**
- * Created by Justen on 2016-09-12.
+ * Takes a String representing a log line and outputs Tuple of TimeStamp, String, Request.
  */
 public class LineSplitter implements FlatMapFunction<String, Tuple3<Long, String, String>>
 {

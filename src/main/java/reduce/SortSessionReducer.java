@@ -8,7 +8,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Created by Justen on 2016-09-13.
+ * Takes Tuple2<User, SessionLength> for a each session and returns the total session time per user in minutes.
  */
 public class SortSessionReducer implements GroupReduceFunction<Tuple2<String, Long>, Tuple2<String, Double>>
 {
@@ -16,7 +16,8 @@ public class SortSessionReducer implements GroupReduceFunction<Tuple2<String, Lo
     public void reduce(Iterable<Tuple2<String, Long>> iterable, Collector<Tuple2<String, Double>> collector) throws Exception
     {
         Map<String, Long> userMaxMap = new HashMap<String, Long>();
-        long LONGEST = Long.MIN_VALUE;
+
+        // Aggregate the total session time for a given user
         for (Tuple2<String, Long> t : iterable)
         {
             String user = t.f0;

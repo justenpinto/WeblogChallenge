@@ -10,7 +10,7 @@ import java.util.Map;
 import java.util.Set;
 
 /**
- * Created by juspinto on 13/09/2016.
+ * Takes a Tuple of TimeStamp, User, Requests and generates a Tuple list of User, SessionNum, NumberOfHitsForSession.
  */
 public class UserSessionHitsReducer implements GroupReduceFunction<Tuple3<Long, String, String>, Tuple3<String, Integer, Integer>>
 {
